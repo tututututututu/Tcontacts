@@ -21,6 +21,18 @@ public class App extends Application {
         app = this;
 
         initOk();
+
+        initSp();
+
+        initToast();
+    }
+
+    private void initToast() {
+        ToastUtils.init(false);
+    }
+
+    private void initSp() {
+        SPUtils.initSP(this,"config");
     }
 
     private void initOk() {

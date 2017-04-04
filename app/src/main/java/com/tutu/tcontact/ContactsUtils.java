@@ -33,8 +33,9 @@ public class ContactsUtils {
             String number = cursor.getString(1);
 
             ContactInfo info = new ContactInfo();
-            info.setName(name);
-            info.setNumber(number);
+
+            info.setName(name.replace(" ", ""));
+            info.setNumber(number.replace(" ", ""));
 
             result.add(info);
         }
