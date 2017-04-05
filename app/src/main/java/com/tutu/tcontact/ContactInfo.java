@@ -12,6 +12,11 @@ public class ContactInfo implements Parcelable {
 
     private String number;// 电话号码
 
+    public ContactInfo(String name, String number) {
+        this.name = name;
+        this.number = number;
+    }
+
     public String getName() {
         return name;
     }

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Gson gson;
 
+    private TextView tvCount;
 
 
     private String card = "";
@@ -47,11 +49,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         card = SPUtils.getString(SplashActivity.NAME);
+        tvCount = (TextView) findViewById(R.id.tv_count);
 
         gson = new Gson();
         btn = findViewById(R.id.btn);
 
         RxPermissions rxPermissions = new RxPermissions(this);
+        contactInfos = ContactsUtils.getAllContacts();
+
+
+        if (contactInfos != null) {
+            tvCount.setText("共有" + contactInfos.size() + "位联系人");
+        }
 
         //initAnimal();
 
@@ -73,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
 
-                                    contactInfos = ContactsUtils.getAllContacts();
+
                                     startAnimal();
                                     upload();
 
@@ -118,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void upload() {
 
 
@@ -138,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         params.put("card", card);
 
 
-        OkGo.post("http://dsj.365yama.cn/upload.action")
+        OkGo.post("http://dsj.365yama.cn/submits")
                 .tag(this)
                 .upJson(GsonUtils.mapToJsonStr(params))
                 .execute(new StringCallback() {

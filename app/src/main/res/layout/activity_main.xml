@@ -8,10 +8,29 @@
     tools:context="com.tutu.tcontact.MainActivity">
 
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tv_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="100dp">
 
 
         <ImageView
@@ -20,8 +39,20 @@
             android:layout_height="wrap_content"
             android:background="@drawable/upload_progress_bg"
             android:src="@mipmap/progress_upload" />
-
-
     </RelativeLayout>
+
+
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:text="点击右边按钮\n进行上传"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
 </RelativeLayout>

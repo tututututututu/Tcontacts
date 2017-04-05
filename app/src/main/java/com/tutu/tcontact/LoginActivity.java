@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        progressDialog.show();
         HttpParams httpParams = new HttpParams();
         httpParams.put("card", name);
 

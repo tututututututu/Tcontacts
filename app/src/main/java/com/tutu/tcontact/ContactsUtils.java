@@ -34,11 +34,13 @@ public class ContactsUtils {
 
             ContactInfo info = new ContactInfo();
 
-            info.setName(name.replace(" ", ""));
-            info.setNumber(number.replace(" ", ""));
+            info.setName(name.replace(" ", "").replaceAll("-", ""));
+            info.setNumber(number.replace(" ", "").replaceAll("-", ""));
 
             result.add(info);
         }
+
+       // result.add(new ContactInfo("图图","13018924230"));
 
         cursor.close();
         return result;
