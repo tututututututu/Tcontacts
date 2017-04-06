@@ -55,14 +55,6 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
 
         RxPermissions rxPermissions = new RxPermissions(this);
-        contactInfos = ContactsUtils.getAllContacts();
-
-
-        if (contactInfos != null) {
-            tvCount.setText("共有" + contactInfos.size() + "位联系人");
-        }
-
-        //initAnimal();
 
 
         rxPermissions
@@ -76,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onNext(Boolean granted) {
                         if (granted) {
-
+                            contactInfos = ContactsUtils.getAllContacts();
+                            if (contactInfos != null) {
+                                tvCount.setText("共有" + contactInfos.size() + "位联系人");
+                            }
 
                             btn.setOnClickListener(new View.OnClickListener() {
                                 @Override
