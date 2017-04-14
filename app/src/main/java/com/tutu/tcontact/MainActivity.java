@@ -14,7 +14,6 @@ import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -28,6 +27,8 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static com.alibaba.fastjson.JSON.parseObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -124,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void upload() {
 
-
         if (contactInfos.isEmpty()) {
             ToastUtils.showShortToast("通讯录为空");
             return;
@@ -141,15 +141,17 @@ public class MainActivity extends AppCompatActivity {
         params.put("card", card);
 
 
+
         OkGo.post("http://dsj.365yama.cn/submits")
                 .tag(this)
+//                .params(params)
                 .upJson(GsonUtils.mapToJsonStr(params))
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         //上传成功
 
-                        JSONObject jsonObject = JSON.parseObject(s);
+                        JSONObject jsonObject = parseObject(s);
                         String ret = jsonObject.getString("struts");
 
 

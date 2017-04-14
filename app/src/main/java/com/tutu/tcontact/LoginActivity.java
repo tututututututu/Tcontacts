@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         httpParams.put("card", name);
 
 
-        OkGo.post("http://dsj.365yama.cn/login.action")
+        OkGo.post("http://dsj.365yama.cn/login")
                 .tag(this)
                 .params(httpParams)
                 .execute(new StringCallback() {
